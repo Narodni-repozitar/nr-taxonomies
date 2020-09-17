@@ -54,6 +54,8 @@ class NRTaxonomyFetcher:
         tar = tarfile.open(path, suffix)
         tar.extractall(path=target)
         tar.close()
+        tar_p = Path(path)
+        tar_p.unlink(missing_ok=True)
         return target
 
     def import_taxonomies(self, dir_=None):
@@ -61,7 +63,8 @@ class NRTaxonomyFetcher:
             dir_ = self.taxonomy_dir
         p = Path(dir_)
         for path in p.iterdir():
-            self.import_taxonomy(path)
+            if str(path).endswith("xlsx"):
+                self.import_taxonomy(path)
 
     @staticmethod
     def import_taxonomy(path):

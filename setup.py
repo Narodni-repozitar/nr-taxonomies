@@ -39,9 +39,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
-        # 'flask.commands': [
-        #     'my-command=flask_my_extension.commands:cli'
-        # ]
+        'flask.commands': [
+            'nusl=nr_taxonomies.cli:nusl'
+        ]
     },
     extras_require=extras_require,
     install_requires=install_requires,
