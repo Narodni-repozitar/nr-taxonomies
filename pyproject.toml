@@ -1,0 +1,23 @@
+[tool]
+[tool.poetry]
+name = "nr-taxonomies"
+version = "1.0.0a2"
+description = "NUSL theses data model."
+license = "MIT"
+authors = ["Daniel Kopecký <Daniel.Kopecky@techlib.cz>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+oarepo-taxonomies = "<3.0.0,>=2.4.1"
+requests = "*"
+nr-cli = { git = "https://github.com/Narodni-repozitar/nr-cli.git", branch = "master" }
+oarepo = { version = "^3.3.0", optional = true }
+pytest = { version = "^5.0.0", optional = true }
+pytest-cov = { version = "^2.10.1", optional = true }
+
+[tool.poetry.extras]
+tests = ["oarepo", "pytest", "pytest-cov"]
+
+[tool.poetry.plugins.'flask.commands']
+'nr' = 'nr_taxonomies.cli:nr'

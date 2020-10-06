@@ -1,6 +1,7 @@
 import subprocess
 import tarfile
 import uuid
+import zipfile
 from pathlib import Path
 
 import requests
@@ -31,9 +32,9 @@ class NRTaxonomyFetcher:
                     # if chunk:
                     f.write(chunk)
         self.path = str(path)
-        return p
+        return self.path
 
-    def extract_tarfile(self, path: str = None):
+    def extract_archive(self, path: str = None):
         if not path:
             path = self.path
         if path.endswith("tar.gz"):
@@ -42,8 +43,10 @@ class NRTaxonomyFetcher:
             target = self._extract_tarfile(path, "r:xz")
         elif path.endswith("tar"):
             target = self._extract_tarfile(path, "r:")
+        elif path.endswith("zip"):
+            target = self._extract_zipfile(path)
         else:
-            raise Exception("This is not tar archive")
+            raise Exception("This is not tar or zip archive")
         self.taxonomy_dir = target
 
     @staticmethod
@@ -54,6 +57,17 @@ class NRTaxonomyFetcher:
         tar = tarfile.open(path, suffix)
         tar.extractall(path=target)
         tar.close()
+        tar_p = Path(path)
+        tar_p.unlink(missing_ok=True)
+        return target
+
+    @staticmethod
+    def _extract_zipfile(path, target="/tmp/taxonomies"):
+        p = Path(target)
+        if not p.is_dir():
+            p.mkdir()
+        with zipfile.ZipFile(path, "r") as zf:
+            zf.extractall(target)
         tar_p = Path(path)
         tar_p.unlink(missing_ok=True)
         return target
