@@ -1,10 +1,10 @@
 import click
+from nr_cli import nr
 
-from invenio_nusl.cli import nusl
 from nr_taxonomies.fetcher import NRTaxonomyFetcher
 
 
-@nusl.group()
+@nr.group()
 def taxonomies():
     pass
 
@@ -22,5 +22,5 @@ def taxonomies():
 def import_taxonomies(url, target, suffix):
     fetcher = NRTaxonomyFetcher(url)
     fetcher.download_file(path=target, suffix=suffix)
-    fetcher.extract_tarfile()
+    fetcher.extract_archive()
     fetcher.import_taxonomies()
