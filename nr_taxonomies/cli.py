@@ -21,6 +21,9 @@ def taxonomies():
               help="Suffix of tar archive e.g.: (tax.xz, tar.gz or only tar")
 def import_taxonomies(url, target, suffix):
     fetcher = NRTaxonomyFetcher(url)
+    print("Downloading archive...")
     fetcher.download_file(path=target, suffix=suffix)
+    print("Extracting files...")
     fetcher.extract_archive()
+    print("Importing taxonomies...")
     fetcher.import_taxonomies()

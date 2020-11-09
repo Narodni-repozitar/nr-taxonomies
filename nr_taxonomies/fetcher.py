@@ -78,6 +78,7 @@ class NRTaxonomyFetcher:
         p = Path(dir_)
         for path in p.iterdir():
             if str(path).endswith("xlsx"):
+                print(f"Start import file: {path.name}")
                 self.import_taxonomy(path)
 
     @staticmethod
