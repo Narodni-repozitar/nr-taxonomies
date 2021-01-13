@@ -10,6 +10,8 @@ def taxonomies():
 
 
 @taxonomies.command("import")
+@click.option("-d", "--directory", "dir_",
+              help="Path to the directory where taxonomies excel files are stored")
 @click.option("-u", "--url", "url",
               default="https://space.techlib.cz/index.php/s/KqHdTLqKXrgst5H/download",
               help="Link to the tar archive with all taxonomies",
@@ -19,11 +21,15 @@ def taxonomies():
               help="Path as string to the directory where taxonomies will be stored", type=str)
 @click.option("-s", "--suffix", "suffix", default="tar.xz",
               help="Suffix of tar archive e.g.: (tax.xz, tar.gz or only tar")
-def import_taxonomies(url, target, suffix):
+def import_taxonomies(url, target, suffix, dir_=None):
     fetcher = NRTaxonomyFetcher(url)
-    print("Downloading archive...")
-    fetcher.download_file(path=target, suffix=suffix)
-    print("Extracting files...")
-    fetcher.extract_archive()
-    print("Importing taxonomies...")
-    fetcher.import_taxonomies()
+    if dir_:
+        print("Importing taxonomies...")
+        fetcher.import_taxonomies(dir_=dir_)
+    else:
+        print("Downloading archive...")
+        fetcher.download_file(path=target, suffix=suffix)
+        print("Extracting files...")
+        fetcher.extract_archive()
+        print("Importing taxonomies...")
+        fetcher.import_taxonomies()
