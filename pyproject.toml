@@ -9,12 +9,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-oarepo-taxonomies = "^3.0.0a1"
-requests = "*"
 nr-cli = { git = "https://github.com/Narodni-repozitar/nr-cli.git", branch = "master" }
+requests = "^2.25.1"
 
 
 [tool.poetry.dev-dependencies]
+oarepo-taxonomies = "^3.0.0a1"
 oarepo = "^3.3.0"
 pytest = "^5.0.0"
 pytest-cov = "^2.10.1"
