@@ -46,7 +46,6 @@ jobs:
         run: |
           poetry install --extras tests
           cat poetry.lock
-      - name: Test with pytest
-        run: |
-          "./run-tests.sh"
-
+#      - name: Test with pytest
+#        run: |
+#          "./run-tests.sh"
