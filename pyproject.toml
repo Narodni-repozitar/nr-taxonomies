@@ -1,7 +1,7 @@
 [tool]
 [tool.poetry]
 name = "techlib-nr-taxonomies"
-version = "1.0.0a8"
+version = "1.0.0a9"
 description = "NUSL theses data model."
 license = "MIT"
 authors = ["Daniel Kopecký <Daniel.Kopecky@techlib.cz>"]
