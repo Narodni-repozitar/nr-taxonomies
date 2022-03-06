@@ -1,0 +1,32 @@
+{
+  "title": {
+    "type": "object",
+    "description": "Title of vocabulary item. Keys are locale codes.",
+    "patternProperties": {
+      "^[a-z]{2}$": {
+        "type": "string"
+      }
+    }
+  },
+  "icon": {
+    "type": "string"
+  },
+  "relatedURI": {
+    "description": "alternate links/PIDs/PURLs for the record from external resources/vocabularies.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "valueURI": {
+        "type": "string"
+      },
+      "scheme": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "valueURI",
+      "scheme"
+    ],
+    "uniqueItems": true
+  }
+}

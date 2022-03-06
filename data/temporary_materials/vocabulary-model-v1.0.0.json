@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "local://vocabularies/vocabulary-v1.0.0.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "$ref": "local://definitions-v1.0.0.json#/$schema"
+    },
+    "description": {
+      "type": "object",
+      "description": "Description of vocabulary item. Key are locale codes.",
+      "patternProperties": {
+        "^[a-z]{2}$": {
+          "type": "string"
+        }
+      }
+    },
+    "acronym": {
+      "type": "string"
+    },
+    "icon": {
+      "$ref": "local://vocabularies/definitions-v1.0.0.json#/icon"
+    },
+    "id": {
+      "$ref": "local://definitions-v1.0.0.json#/identifier"
+    },
+    "pid": {
+      "$ref": "local://definitions-v1.0.0.json#/internal-pid"
+    },
+    "props": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "string"
+        },
+        "enum": [
+          "SEZNAM ČISTĚ PRO KONCEPT. SCHŮZKU - SMAZAT CELÉ ENUM",
+          "marcCode",
+          "dataCiteCode",
+          "alpha3Code",
+          "alpha3CodeENG",
+          "alpha3CodeNative",
+          "ICO",
+          "RID",
+          "coarType",
+          "dataCiteType"
+        ]
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "title": {
+      "$ref": "local://vocabularies/definitions-v1.0.0.json#/title"
+    },
+    "nonpreferredLabels":{
+      "type": "array",
+      "items": {
+        "$ref": "multilang"
+      }
+    },
+    "relatedURI": {
+      "description": "alternate links/PIDs/PURLs for the record from external resources/vocabularies.",
+      "type": "array",
+      "items": {"$ref": "local://vocabularies/definitions-v1.0.0.json#/relatedURI |||| nebo |||| local://definitions-v1.0.0.json#/identifiers_with_scheme"},
+      "uniqueItems": true
+    },
+    "type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pid_type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
