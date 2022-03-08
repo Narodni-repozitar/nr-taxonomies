@@ -33,19 +33,7 @@
       "patternProperties": {
         "^.*$": {
           "type": "string"
-        },
-        "enum": [
-          "SEZNAM ČISTĚ PRO KONCEPT. SCHŮZKU - SMAZAT CELÉ ENUM",
-          "marcCode",
-          "dataCiteCode",
-          "alpha3Code",
-          "alpha3CodeENG",
-          "alpha3CodeNative",
-          "ICO",
-          "RID",
-          "coarType",
-          "dataCiteType"
-        ]
+        }
       }
     },
     "tags": {
@@ -61,6 +49,12 @@
       "type": "array",
       "items": {
         "$ref": "multilang"
+      }
+    },
+    "contexts":{
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     },
     "relatedURI": {
