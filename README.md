@@ -33,4 +33,4 @@ All options are optional and the library should work without having to set anyth
 
 ## Documentation
 
-Documentation of the taxonomies/controlled vocabularies used for the 'National repository - part documents' is available in file [vocabularies_documentation_NRdocs_202205](https://github.com/Narodni-repozitar/nr-taxonomies/blob/taxonomies-for-nr-docs/data/temporary_materials/).
+Documentation of the taxonomies/controlled vocabularies used for the 'National repository - part documents' is available (for now only in Czech) from the file [vocab_documentation_NRdocs_cz](https://github.com/Narodni-repozitar/nr-taxonomies/blob/taxonomies-for-nr-docs/data/temporary_materials/).
